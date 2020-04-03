@@ -13,9 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    source_file = 'https://ece516-bucket.s3.amazonaws.com/reference_faces/SteveMann.jpg'
-    print(type(base64.b64encode(requests.get(source_file).content)))
-    return str(base64.b64encode(requests.get(source_file).content))
+    return "ECE516"
 
 
 @app.route('/whichface',methods=['POST'])
