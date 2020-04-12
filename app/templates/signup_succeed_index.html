@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <style>
+        div.padding1 {
+            padding-top: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input.extra {
+            color: black;
+        }
+
+        h3.error {
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <h2>Congratulations! <span style="color: yellow">{{ username }}</span> You Have Successfully Signed Up!
+                </h2>
+                <h3> Please Remember Your Account Name and Password: </h3>
+                <h3> Account Name: <span style="color: yellow">{{ username }}</span></h3>
+                <h3> Password: <span style="color: yellow">{{ password }}</span></h3>
+                <h3 class="error">{{ error_msg if error_msg != None }}</h3>
+                <h3 class="error">{{ success_msg if success_msg != None }}</h3>
+                <form action='/signup/send_email' method='post'>
+                    <div align="left">
+                        <h4>Send The Info to my email@:</h4>
+                        <input name='email' type='text' value='{{ email if email  != None }}'>
+                        <input name='username' type="hidden" value="{{ username }}">
+                        <input name='password' type="hidden" value="{{ password }}">
+                    </div>
+                    <p></p>
+                    <div style="width: 100%; overflow: hidden;">
+                        <div style="width: 0px; float: left;">
+                            <a href="/" class="button" type="submit">Back Home</a>
+                        </div>
+                        <div align="right">
+                            <input class="button" type='submit' value='Send'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+        <hr/>
+        <div style="padding-left: 10px">
+            <div>Prosopagnosia Helper Web Management Interface</div>
+            <div>ECE516 (ECE516H1S): Intelligent Image Processing</div>
+            <div>by: FelixHong, FredPan, ChrisXu, Stephen Huang, Tiancong Wang</div>
+        </div>
+        <div style="padding-left: 10px">
+            &copy; Design Template Source: <a href="https://templated.co/">TEMPLATED</a>.
+        </div>
+
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.poptrox.min.js"></script>
+<script src="../static/js/jquery.scrolly.min.js"></script>
+<script src="../static/js/skel.min.js"></script>
+<script src="../static/js/util.js"></script>
+<script src="../static/js/main.js"></script>
+
+</body>
+</html>

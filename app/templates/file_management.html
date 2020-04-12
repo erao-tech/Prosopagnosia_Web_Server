@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Photo Gallery</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input.extra {
+            color: black;
+        }
+
+        h3.error {
+            color: red;
+        }
+
+        h3.info {
+            color: blue;
+        }
+
+        img.show {
+            width: 50%%;
+            max-width: 200px;
+        }
+
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 30px;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        img.modalimg {
+            width: 80%;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/"><span class="icon fa-home"></span></a></li>
+            <li><a href="/file_management" class="active"><span class="icon fa-database"></span></a></li>
+            <li><a href="/upload_management"><span class="icon fa-upload"></span></a></li>
+            <li><a href="/process_image"><span class="icon fa-camera"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Header -->
+        <header id="header">
+            <div align="left">
+                <h2>Reference Faces in the Database: </h2>
+            </div>
+            <hr/>
+            <div align="left">
+                <h3 class="info">{{ info_msg if info_msg != None }}</h3>
+                <h3 class="error">{{ error_msg if error_msg != None }}</h3>
+            </div>
+        </header>
+
+        <section id="mysection">
+
+            {% if fileNumber == 0 %}
+                <div class="pad">
+                    <h3 style="color: red">No Photo Uploaded, Try upload one?</h3>
+                    <a href="/upload_management" class="button">Process New Photo</a>
+                </div>
+            {% else %}
+                <!-- show -->
+
+                {% for dict in dictList %}
+                    <!-- ==================== Loop Start ====================-->
+                    <div class="pad">
+                        <h2>{{ dict["personName"] }}</h2>
+                        <img class="show hover-shadow cursor" src="{{ dict["cloudSaveFilename"] }}"
+                             class="hover-shadow">
+                        <!-- Trigger/Open The Modal -->
+                        <p>
+                            <button id="{{ dict["buttonID"] }}">Edit Tag</button>
+                        </p>
+                        <form action='delete_image' method='post'>
+                            <input type="hidden" name="deleteImageName" value="{{ dict["cloudImageName"] }}">
+                            <p>
+                                <button type='submit' value='Delete Image'>Delete Image</button>
+                            </p>
+                        </form>
+                    </div>
+                    <hr/>
+
+                    <!-- The Modal -->
+                    <div id="{{ dict["modalID"] }}" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span id="{{ dict["closeID"] }}" class="close">&times;</span>
+                            <p>{{ dict["userFileName"] }}</p>
+                            <p><img class="modalimg" src="{{ dict["cloudSaveFilename"] }}"
+                                    alt="{{ dict["userFileName"] }}"></p>
+                            <form action='name_tag_modify' method='post'>
+                                <div align="left">
+                                    <p>Person Name Tag:</p>
+                                    <input class="extra" name='nameTag' type='text' value='{{ dict["personName"] }}'>
+                                    <input type="hidden" name="imageName" value="{{ dict["cloudImageName"] }}">
+                                </div>
+                                <p><input class="button" type='submit' value='Modify'></p>
+                            </form>
+                        </div>
+
+                    </div>
+                    <!-- ==================== Loop End ====================-->
+
+                {% endfor %}
+
+            {% endif %}
+
+            <!-- Footer -->
+            <div style="padding-left: 10px">
+                <div>Prosopagnosia Helper Web Management Interface</div>
+                <div>ECE516 (ECE516H1S): Intelligent Image Processing</div>
+                <div>by: FelixHong, FredPan, ChrisXu, Stephen Huang, Tiancong Wang</div>
+            </div>
+            <div style="padding-left: 10px">
+                &copy; Design Template Source: <a href="https://templated.co/">TEMPLATED</a>.
+            </div>
+        </section>
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.poptrox.min.js"></script>
+<script src="../static/js/jquery.scrolly.min.js"></script>
+<script src="../static/js/skel.min.js"></script>
+<script src="../static/js/util.js"></script>
+<script src="../static/js/main.js"></script>
+
+<!-- Model Script -->
+
+{% for dict in dictList %}
+    <script>
+        // Get the modal
+        var {{dict["modalID"]}} =;
+        document.getElementById("{{dict["modalID"]}}");
+        // Get the button that opens the modal
+        var {{dict["buttonID"]}} =;
+        document.getElementById("{{dict["buttonID"]}}");
+        // Get the <span> element that closes the modal
+        var {{dict["closeID"]}} =;
+        document.getElementById("{{dict["closeID"]}}");
+        // When the user clicks the button, open the modal
+        {{dict["buttonID"]}}.onclick = function () {
+            {{dict["modalID"]}}.
+            style.display = "block";
+        }
+            // When the user clicks on <span> (x), close the modal
+            {{dict["closeID"]}}.onclick = function () {
+            {{dict["modalID"]}}.
+            style.display = "none";
+        };
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == {{dict["modalID"]}}) {
+                {{dict["modalID"]}}.
+                style.display = "none";
+            }
+        }
+    </script>
+{% endfor %}
+
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <title>Upload New Photo for Processing</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <link rel="stylesheet" href="../static/css/upload-file.css"/>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input.extra {
+            color: black;
+        }
+
+        h3.error {
+            color: red;
+        }
+
+        h3.info {
+            color: blue;
+        }
+
+        img.show {
+            width: 100%;
+            max-width: 600px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/"><span class="icon fa-home"></span></a></li>
+            <li><a href="/file_management"><span class="icon fa-database"></span></a></li>
+            <li><a href="/upload_management"><span class="icon fa-upload"></span></a></li>
+            <li><a href="/process_image" class="active"><span class="icon fa-camera"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Header -->
+        <header id="header">
+            <div align="left">
+                <h2>Upload New Photo For Recognition</h2>
+            </div>
+            <hr/>
+        </header>
+        <section id="mysection">
+            <!-- Upload -->
+            <div class="pad">
+                <h3 align="left">STEP①: Upload New File from Local:</h3>
+                <h4>.jpg/.png/.jpeg:</h4>
+                <h4>The Max size is 5MB </h4>
+                <h3 class="error">{{ error_msg if error_msg != None }}</h3>
+                <!-- Trigger/Open The Modal -->
+                <button id="myBtn">Upload New Photo for Processing</button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form method=post enctype=multipart/form-data action="/which_face">
+                            Please upload the file below:<br/>
+                            <input id="upload_file" type=file name=img>
+                            <input id="upload_file_btn" type=submit value="Upload and Process">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <hr/>
+
+            <!-- Result -->
+            <div class="pad">
+                <h3 align="left">STEP②: View The Result:</h3>
+                <h3 class="info">{{ info_msg if info_msg != None }}</h3>
+                <h2>Image Input==>:</h2>
+                <div class="myImg">
+                    <img class="show" src="{{ uploadImagePath }}" alt="{{ fileName }}" style="width:100%">
+                </div>
+                <h2>Processed Result==>:</h2>
+                <h2>{{ match_result }}</h2>
+
+            </div>
+
+            <!-- Footer -->
+            <hr/>
+            <div style="padding-left: 10px">
+                <div>Prosopagnosia Helper Web Management Interface</div>
+                <div>ECE516 (ECE516H1S): Intelligent Image Processing</div>
+                <div>by: FelixHong, FredPan, ChrisXu, Stephen Huang, Tiancong Wang</div>
+            </div>
+            <div style="padding-left: 10px">
+                &copy; Design Template Source: <a href="https://templated.co/">TEMPLATED</a>.
+            </div>
+        </section>
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.poptrox.min.js"></script>
+<script src="../static/js/jquery.scrolly.min.js"></script>
+<script src="../static/js/skel.min.js"></script>
+<script src="../static/js/util.js"></script>
+<script src="../static/js/main.js"></script>
+<script src="../static/js/upload-file.js"></script>
+<script src="../static/js/upload.js"></script>
+
+</body>
+</html>

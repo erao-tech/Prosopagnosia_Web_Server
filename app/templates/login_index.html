@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <style>
+
+        div.padding1 {
+            padding-top: 10px;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input.extra {
+            color: black;
+        }
+
+        h3.error {
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <h2>Prosopagnosia Helper Web Management Interface</h2>
+                <h3> ECE516 (ECE516H1S): Intelligent Image Processing </h3>
+                <h3 class="error">{{ error if error != None }}</h3>
+                <form action='login_submit' method='post'>
+                    <div align="left">
+                        <h4>Username:</h4>
+                        <input class="extra" name='username' type='text' value='{{ username if username != None }}'>
+                    </div>
+                    <div align="left">
+                        <h4>Password:</h4>
+                        <input class="extra" name='password' type='password'>
+                    </div>
+                    <div class="padding1" align="right"><input type="checkbox" id="checkbox" name="remember"
+                                                               checked><label for="checkbox">Keep me login in 7 days!
+                        :)</label></div>
+                    <div style="width: 100%; overflow: hidden;">
+                        {#                                        <div style="width: 0px; float: left;">#}
+                        {#                                            <a href="/signup" class="button">Signup</a>#}
+                        {#                                        </div>#}
+                        <div align="right">
+                            <input class="button" type='submit' value='Login'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+
+        <hr/>
+        <div style="padding-left: 10px">
+            <div>Prosopagnosia Helper Web Management Interface</div>
+            <div>ECE516 (ECE516H1S): Intelligent Image Processing</div>
+            <div>by: FelixHong, FredPan, ChrisXu, Stephen Huang, Tiancong Wang</div>
+        </div>
+        <div style="padding-left: 10px">
+            &copy; Design Template Source: <a href="https://templated.co/">TEMPLATED</a>.
+        </div>
+
+
+    </section>
+</div>
+
+
+<!-- Scripts -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.poptrox.min.js"></script>
+<script src="../static/js/jquery.scrolly.min.js"></script>
+<script src="../static/js/skel.min.js"></script>
+<script src="../static/js/util.js"></script>
+<script src="../static/js/main.js"></script>
+
+</body>
+
+
+</html>

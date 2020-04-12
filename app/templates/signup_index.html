@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Snapshot by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <!-- Scripts -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery.poptrox.min.js"></script>
+    <script src="../static/js/jquery.scrolly.min.js"></script>
+    <script src="../static/js/skel.min.js"></script>
+    <script src="../static/js/util.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/signup.js"></script>
+
+    <title>Sign Up</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        input.extra {
+            color: black;
+        }
+
+        h3.error {
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <section id="main">
+
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <h2>Welcome to Image Text Identification Process Engine</h2>
+                <h3> ECE1779:Introduction to Cloud Computing Project </h3>
+                <h3> Please Sign Up </h3>
+                <h3 class="error">{{ error_msg if error_msg != None }}</h3>
+                <form action='/signup/save' method='post' id="register">
+                    <div align="left">
+                        <h4>Login Name</h4>
+                        <input required placeholder="Username must has length 1-16, and only contains A-Z, a-z, or 0-9"
+                               name='username' type='text' pattern="[A-Za-z0-9]{1,20}"
+                               value='{{ username if username  != None }}'>
+                    </div>
+
+                    <div align="left">
+                        <h4>Password</h4>
+                        <input required placeholder="Password must has length 1-16" name='password1' type='password'
+                               minlength="1" maxlength="16" value='{{ password1 if password1  != None }}'>
+                    </div>
+
+                    <div align="left">
+                        <h4>Re-enter Password</h4>
+                        <input required placeholder="Password must has length 1-16" name='password2' type='password'
+                               minlength="1" maxlength="16" value='{{ password2 if password2  != None }}'>
+                    </div>
+                    <p></p>
+                    <div style="width: 100%; overflow: hidden;">
+                        <div style="width: 0px; float: left;">
+                            <a href="/" class="button" type="ubmit">Back Home</a>
+                        </div>
+                        <div align="right">
+                            <input id="signup_submit" class="button" type='submit' value='Submit'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+
+        <hr/>
+        <div style="padding-left: 10px">
+            <div>Prosopagnosia Helper Web Management Interface</div>
+            <div>ECE516 (ECE516H1S): Intelligent Image Processing</div>
+            <div>by: FelixHong, FredPan, ChrisXu, Stephen Huang, Tiancong Wang</div>
+        </div>
+        <div style="padding-left: 10px">
+            &copy; Design Template Source: <a href="https://templated.co/">TEMPLATED</a>.
+        </div>
+
+    </section>
+</div>
+
+
+</body>
+</html>
