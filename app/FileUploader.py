@@ -99,7 +99,7 @@ def delete_image():
 def which_face():
     try:
         if request.method == 'POST':
-            img_file = request.form['img']
+            img_file = request.files['img']
 
             # check if the post request has the file part
             if 'img' not in request.files:
