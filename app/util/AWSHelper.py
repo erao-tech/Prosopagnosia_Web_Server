@@ -63,10 +63,15 @@ def compare_faces(target_image):
     target_image_in_s3 = {"Bucket": "ece516-bucket", "Name": target_image, }
     for ref_face_dict in dictList:
         cur_ref_face = {"Bucket": "ece516-bucket", "Name": ref_face_dict["cloudImageName"], }
-
-        response = client.compare_faces(SimilarityThreshold=80,
-                                        SourceImage={'S3Object': cur_ref_face},
-                                        TargetImage={'S3Object': target_image_in_s3})
+        try:
+            response = client.compare_faces(SimilarityThreshold=80,
+                                            SourceImage={'S3Object': cur_ref_face},
+                                            TargetImage={'S3Object': target_image_in_s3})
+        except Exception as ex:
+            if ex.response['Error']['Code'] == "InvalidParameterException":
+                return False, "There is no face detected"
+            else:
+                return False, str(ex)
         cur_ref_face_name = ref_face_dict["personName"]
         match_result = dict()
         match_result['name'] = cur_ref_face_name

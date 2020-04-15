@@ -28,6 +28,7 @@ def which_face_api():
                     return info_msg
                 else:
                     result = (match_output[0]['name'], str(match_output[0]['score']))
+
                     return str(result)  # '200'#(match_output[0]['name'], match_output[0]['score'])
 
             else:
