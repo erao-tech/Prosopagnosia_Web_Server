@@ -204,13 +204,13 @@
 {% for dict in dictList %}
     <script>
         // Get the modal
-        var {{dict["modalID"]}} =;
+        var {{dict["modalID"]}} =
         document.getElementById("{{dict["modalID"]}}");
         // Get the button that opens the modal
-        var {{dict["buttonID"]}} =;
+        var {{dict["buttonID"]}} =
         document.getElementById("{{dict["buttonID"]}}");
         // Get the <span> element that closes the modal
-        var {{dict["closeID"]}} =;
+        var {{dict["closeID"]}} =
         document.getElementById("{{dict["closeID"]}}");
         // When the user clicks the button, open the modal
         {{dict["buttonID"]}}.onclick = function () {
