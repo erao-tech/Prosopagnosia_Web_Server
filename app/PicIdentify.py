@@ -1,8 +1,13 @@
 import base64
-from flask import request
+import datetime
+import time
+
+from flask import request, session
+from werkzeug.utils import secure_filename
 
 from app import webapp
-from app.S3Helper import store_file
+from app.FileUploader import get_database, UPLOAD_FOLDER
+from app.S3Helper import store_file, get_file_path_by_key
 from app.util.AWSHelper import compare_faces
 
 
@@ -24,21 +29,21 @@ def which_face_api():
                 match_result, match_output = compare_faces('temp_image.jpg')
                 if match_result == False:
                     info_msg = match_output
-                    if match_result == "":
+                    if match_output == "Image matches none of the face in database":
                         # connect to database and create the record
                         cnx = get_database()
                         cursor = cnx.cursor()
 
                         # rename the upload img as: userpid_useruploadcounter_imagename.extention
-                        userFileName = secure_filename(file.filename)  # example: example.jpg
-                        cloudSaveFilename = str(session["uid"]) + "_" + str(time.time()).replace('.',
-                                                                                                 '') + "_" + userFileName  # example: 12_1_example.jpg
 
-                        store_file(cloudSaveFilename, file)
-                        new_file = get_file_path_by_key(cloudSaveFilename)
+                        cloudSaveFilename = "vuzix" + "_" + str(time.time()).replace('.',
+                                                                                                 '')  # example: 12_1_example.jpg
+
+                        store_file(cloudSaveFilename, img_file)
+
 
                         # prepare for values for sql
-                        fileName = userFileName
+                        fileName = cloudSaveFilename
                         uploadImagePath = UPLOAD_FOLDER + cloudSaveFilename
                         ts = time.time()
                         timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
