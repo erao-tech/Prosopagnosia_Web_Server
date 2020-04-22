@@ -1,7 +1,6 @@
 import base64
 import datetime
 import time
-
 from flask import request, session
 from werkzeug.utils import secure_filename
 
@@ -48,7 +47,7 @@ def which_face_api():
                         ts = time.time()
                         timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
-                        personName = str(time.time()).replace('.', '')
+                        personName = "Not yet init: " + str(time.time()).replace('.', '')
 
                         # update file_name table
                         query = "INSERT INTO file_info (file_name, upload_image_path, cloud_image_name, create_time, person_name) VALUES (%s, %s, %s, %s, %s)"
