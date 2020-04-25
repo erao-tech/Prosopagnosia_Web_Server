@@ -46,4 +46,4 @@ pip install mysql-connector-python
 ```
 
 
-- Make sure there is a SQLdatabase running and configured
+- Make sure there is a SQLdatabase running and configured, the SQL database model can be find in mySQL_model folder
