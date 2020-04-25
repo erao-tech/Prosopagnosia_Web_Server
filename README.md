@@ -44,3 +44,6 @@ pip install mysql-connector-python
 ```
    run.py
 ```
+
+
+- Make sure there is a SQLdatabase running and configured
