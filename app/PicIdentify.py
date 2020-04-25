@@ -13,6 +13,10 @@ request_list = []
 
 @webapp.route('/whichface-api', methods=['POST'])
 def which_face_api():
+    '''
+    This function is called by the Vuzix Blade, the return from this functioin will be pure string
+    :return:
+    '''
     global request_list
     try:
         if request.method == 'POST':

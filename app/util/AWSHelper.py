@@ -24,18 +24,13 @@ def get_database():
         db = g._database = connect_to_database()
     return db
 
-
-def get__all_reference_faces():
-    s3 = boto3.resource('s3')
-    my_bucket = s3.Bucket('ece516-bucket')
-    all_reference_faces = []
-    for file in my_bucket.objects.filter(Prefix="reference_faces/"):
-        if (file.key != "reference_faces/"):
-            all_reference_faces.append(file.key)
-    return all_reference_faces
-
-
 def compare_faces(target_image):
+    '''
+    This function compairs two faces and returns the results of the compairation if the comparation succeed, it returns True with the detected peron's name,
+     if the comparation falls under special cases, the function returns False and the message
+    :param target_image:
+    :return:
+    '''
     ##get all faces from database
 
     cnx = get_database()
