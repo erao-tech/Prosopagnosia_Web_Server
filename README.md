@@ -13,7 +13,7 @@ http://52.55.117.58:5000/
 ## Instruction
 
 
-- Create a new python virtual environment as follows:
+- Create a new python virtual environment (Optional) as follows:
 ```
    python -m venv venv
 ```
