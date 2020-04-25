@@ -28,6 +28,10 @@ from app.util.AWSHelper import compare_faces
 
 
 def connect_to_database():
+    '''
+    Function used to connet to database
+    :return:
+    '''
     return mysql.connector.connect(user=db_config['user'], password=db_config['password'], host=db_config['host'],
                                    database=db_config['database'], use_pure=True)
 
@@ -70,6 +74,10 @@ def allowed_file(filename):
 # after user click the upload button
 @webapp.route('/name_tag_modify', methods=['POST'])
 def name_tag_modify():
+    '''
+    This function helps modify the name tag of the photo stored in the database
+    :return: redirect to file managment
+    '''
     name_tag = request.form.get('nameTag', "")
     imageName = request.form.get('imageName', "")
     # update database
@@ -87,6 +95,10 @@ def name_tag_modify():
 # after user click the upload button
 @webapp.route('/delete_image', methods=['POST'])
 def delete_image():
+    '''
+    This function deletes a stored reference face and also deletes the name tag in the database
+    :return:
+    '''
     deleteImageName = request.form.get('deleteImageName', "")
     # delete image from s3
     resut1 = delete_file(deleteImageName)
@@ -112,6 +124,10 @@ def delete_image():
 # after user click the upload button
 @webapp.route('/which_face', methods=['POST'])
 def which_face():
+    '''
+    This function is called from the web page to perform the face compairation function
+    :return:
+    '''
     try:
         if request.method == 'POST':
             img_file = request.files['img']
