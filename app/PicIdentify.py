@@ -42,6 +42,7 @@ def which_face_api():
                     info_msg = match_output
                     print(match_output)
                     if match_output == "There is no face detected":
+                        request_list.remove(request_id)
                         return "There is no face detected"
                     if match_output == "Image matches none of the face in database":
                         # connect to database and create the record
@@ -69,6 +70,7 @@ def which_face_api():
                         data = (fileName, uploadImagePath, cloudSaveFilename, timeStamp, personName)
                         cursor.execute(query, data)
                         cnx.commit()
+                        request_list.remove(request_id)
                     request_list.remove(request_id)
                     return "A NEW FACE added as No." + personName[15:] + " please add name tag later through web app"
                 else:
