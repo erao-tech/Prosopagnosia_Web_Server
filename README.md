@@ -4,7 +4,7 @@ http://52.55.117.58:5000/
 
 ## Environment:
 - Python 3.5 (or better)
-- A python virtual environment
+- A python virtual environment (Optional)
 - Flask
 - Boto3 (AWS Python SDK)
 - Python MySQL connecter
