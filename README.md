@@ -20,8 +20,21 @@ Licensed under the Apache License, Version 2.0 (the "License")
 - Python MySQL connecter
 - AWS CLI 
 
-## Instruction
 
+## Instruction
+- Create an AWS EC2 Instance (Ubuntu 16.04)
+- Open inbound port of 5000 for the server
+
+- Create an AWS S3 Storage and make it public
+
+- Create an AWS RDS with MySQL database
+(the SQL database model can be find in mySQL_model folder)
+
+- Make sure the AWS Rekognition service is enabled
+
+- Access the EC2 Instance with SSH
+
+- Use git to pull the current repository to the server
 
 - Create a new python virtual environment (Optional) as follows:
 ```
@@ -55,5 +68,5 @@ pip install mysql-connector-python
    run.py
 ```
 
+- The web service can be accessed though link https://<Server Address>:5000
 
-- Make sure there is a SQLdatabase running and configured, the SQL database model can be find in mySQL_model folder
