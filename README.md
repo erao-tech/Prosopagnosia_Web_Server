@@ -1,5 +1,6 @@
 # Prosopagnosia_Web_Server
-The web server for the Prosopagnosia Helper System which runs on a AWS EC2 instances.
+The web server for the Prosopagnosia Helper System which runs on a AWS EC2 instances. Currently running here:
+http://52.55.117.58:5000/
 
 ## Environment:
 - Python 3.5 (or better)
