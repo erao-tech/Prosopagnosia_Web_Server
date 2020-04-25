@@ -37,6 +37,8 @@ def which_face_api():
                 if match_result == False:
                     info_msg = match_output
                     print(match_output)
+                    if match_output == "There is no face detected":
+                        return "There is no face detected"
                     if match_output == "Image matches none of the face in database":
                         # connect to database and create the record
                         cnx = get_database()
