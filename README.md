@@ -1,6 +1,16 @@
 # Prosopagnosia_Web_Server
-The web server for the Prosopagnosia Helper System which runs on a AWS EC2 instances. Currently running here:
-http://52.55.117.58:5000/
+The web server for the Prosopagnosia Helper System which runs on a AWS EC2 instances. 
+
+The server is currently running here: http://52.55.117.58:5000/
+
+This project is developed specifically for the AR Glass Vuzix Blade.
+
+Copyright 2020 EraO Prosopagnosia Helper Dev Team, Liren Pan, Yixiao Hong, Hongzheng Xu, Stephen Huang, Tiancong Wang
+
+Supervised by Prof. Steve Mann (http://www.eecg.toronto.edu/~mann/)
+
+Licensed under the Apache License, Version 2.0 (the "License")
+
 
 ## Environment:
 - Python 3.5 (or better)
