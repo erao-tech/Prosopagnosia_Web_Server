@@ -71,8 +71,9 @@ def which_face_api():
                         cursor.execute(query, data)
                         cnx.commit()
                         request_list.remove(request_id)
+                        return "A NEW FACE added as No." + personName[15:] + " please add name tag later through web app"
                     request_list.remove(request_id)
-                    return "A NEW FACE added as No." + personName[15:] + " please add name tag later through web app"
+                    return match_output
                 else:
                     request_list.remove(request_id)
                     result = (match_output[0]['name'], str(match_output[0]['score']))
