@@ -68,5 +68,5 @@ pip install mysql-connector-python
    run.py
 ```
 
-- The web service can be accessed though link https://<Server Address>:5000
+- The web service can be accessed though link https://[Server Address]:5000
 
